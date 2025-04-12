@@ -5,32 +5,28 @@ import cors from 'cors'
 import userRoutes from './routes/userRoute.js'
 import bookRoutes from './routes/bookRoute.js'
 
+const PORT = process.env.PORT || 3000
 
-const PORT=process.env.PORT || 3000
+const app = express()
 
-const app=express()
+app.use(cors({
+    origin: 'https://readify-two.vercel.app', // ✅ removed trailing slash
+    credentials: true,
+}))
 
-app.use(cors(
-    {
-        origin: 'https://readify-two.vercel.app/',
-        credentials: true,
-    }
-))
 app.use(express.json())
 
 // Database connection
 await connectDB()
 
-
-app.get('/',(req,res)=>{
+app.get('/', (req, res) => {
     res.send('Hello ')
 })
 
-// routes
-app.use('/books',bookRoutes)
-app.use('/user',userRoutes)
+// Routes
+app.use('/books', bookRoutes)
+app.use('/user', userRoutes)
 
-
-app.listen(PORT,()=>{
+app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
 })
