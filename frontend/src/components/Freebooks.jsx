@@ -14,7 +14,7 @@ const Freebooks = () => {
                 const data=res.data.book.filter((data) => data.price === 0);
                 setbooks(data)
             } catch (error) {
-                console.log(error)
+                console.log('error',error)
             }
         }
         getBook()

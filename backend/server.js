@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000
 const app = express()
 
 app.use(cors({
-    origin: 'https://readify-two.vercel.app', // ✅ removed trailing slash
+    origin: 'https://readify-two.vercel.app', 
     credentials: true,
 }))
 
